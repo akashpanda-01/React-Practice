@@ -1,0 +1,9 @@
+# Dependencies Folder
+node_modules/
+.parcel-cache/
+# Build OutPuts
+dist/
+build/
+
+# IDEs
+.vscode/
