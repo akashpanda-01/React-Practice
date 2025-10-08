@@ -5,17 +5,31 @@
     margin: 10px;
 }
 
-#nav-items > ul{
+#nav-items ul{
     display: flex;
     list-style-type: none;
+}
+
+#nav-items ul li {
     padding: 10px;
 }
 
-#nav-item > ul > li {
-    padding: 10px;
+#logo {
+    width: 100px;
 }
 
-#header #logo {
-    width: 80px;
-    height: 80px;
+#card {
+    border: 1px solid black;
+    padding: 8px;
+    margin: 10px;
+    width: 200px;
+}
+
+#card img{
+    width: 100%;
+}
+
+.resturant {
+    display: flex;
+    flex-wrap: wrap;
 }
