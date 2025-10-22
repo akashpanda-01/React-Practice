@@ -1,37 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import burgerImage from "../assets/burger.jpg";
 
-// const heading = React.createElement(
-//   "h1",
-//   { style: { color: "red"}, key: "h1"},
-//   "Namaste React"
-// );
-// const heading2 = React.createElement(
-//   "h1",
-//   { style: { color: "blue"}, key: "h2"},
-//   "Hello React World"
-// );
+export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/"
 
-// const container = React.createElement(
-//   "div",
-//   { id: "container" },
-//   React.createElement("ul", {}, [
-//     React.createElement("li", { key: "1" }, "About us"),
-//     React.createElement("li", { key: "2" }, "Menu"),
-//   ])
-// );
-
-// const heading = <h1 id="title" key="heading">Namaste React</h1>;
-
-// const header1 = function () {
-//   return <h1 id="title" key="header1">Hello Jiii</h1>;
-// };
-
-// const Header = function () {
-//   return <h1 id="title" key="Header">World</h1>;
-// };
-
-const resturantData = [
+export const restaurantData = [
   {
     card: {
       "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
@@ -398,100 +369,6 @@ const resturantData = [
     card: {
       "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
       data: {
-        id: "964413",
-        name: "Mysore Xpress Cafe",
-        cloudinaryImageId:
-          "RX_THUMBNAIL/IMAGES/VENDOR/2024/9/27/7c74ede8-d5f5-4ace-b4e6-58cc6463e659_964413.jpg",
-        locality: "Patia",
-        areaName: "Patia",
-        costForTwo: "₹250 for two",
-        cuisines: ["South Indian", "Snacks"],
-        avgRating: 4.5,
-        veg: true,
-        parentId: "565345",
-        avgRatingString: "4.5",
-        totalRatingsString: "846",
-        promoted: true,
-        adTrackingId:
-          "cid=33453813~p=2~adgrpid=33453813#ag1~mp=SWIGGY_IN~bl=FOOD~aet=RESTAURANT~aeid=964413~plpr=COLLECTION~eid=56fc0848-f4a9-4676-8348-fdf6578d91ea~srvts=1759811896169~collid=80377",
-        sla: {
-          deliveryTime: 36,
-          lastMileTravel: 9.6,
-          serviceability: "SERVICEABLE",
-          slaString: "35-40 mins",
-          lastMileTravelString: "9.6 km",
-          iconType: "ICON_TYPE_EMPTY",
-        },
-        availability: {
-          nextCloseTime: "2025-10-07 13:00:00",
-          opened: true,
-        },
-        badges: {
-          imageBadges: [
-            {
-              imageId: "v1695133679/badges/Pure_Veg111.png",
-              description: "pureveg",
-            },
-          ],
-        },
-        isOpen: true,
-        aggregatedDiscountInfoV2: {},
-        type: "F",
-        badgesV2: {
-          entityBadges: {
-            textBased: {},
-            imageBased: {
-              badgeObject: [
-                {
-                  attributes: {
-                    imageId: "v1695133679/badges/Pure_Veg111.png",
-                    description: "pureveg",
-                  },
-                },
-              ],
-            },
-            textExtendedBadges: {},
-          },
-        },
-        orderabilityCommunication: {
-          title: {},
-          subTitle: {},
-          message: {},
-          customIcon: {},
-          commsStyling: {},
-        },
-        differentiatedUi: {
-          displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-          differentiatedUiMediaDetails: {
-            mediaType: "ADS_MEDIA_ENUM_IMAGE",
-            lottie: {},
-            video: {},
-          },
-        },
-        reviewsSummary: {},
-        displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-        restaurantOfferPresentationInfo: {},
-        externalRatings: {
-          aggregatedRating: {
-            rating: "--",
-          },
-        },
-        ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
-        campaignId: "33453813",
-      },
-      analytics: {},
-      cta: {
-        link: "swiggy://menu?restaurant_id=964413&source=collection&query=Poori",
-        text: "RESTAURANT_MENU",
-        type: "DEEPLINK",
-      },
-      widgetId: "collectionV5RestaurantListWidget",
-    },
-  },
-  {
-    card: {
-      "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
-      data: {
         id: "106173",
         name: "Shree Kunj",
         cloudinaryImageId: "fftinvb61fuv5g11pfwq",
@@ -599,77 +476,9 @@ const resturantData = [
   },
 ];
 
-const Title = () => {
-  return (
-    <a href="/">
-      <img
-        id="logo"
-        alt="logo"
-        src="https://i.pinimg.com/736x/e6/17/f1/e617f1bfb9af4d9cf132cd3dec0da072.jpg"
-      />
-    </a>
-  );
+export const dynamicaData = {
+  name: "Burger King",
+  image: burgerImage,
+  cusines: ["Burger", "Indian"],
+  rating: "4.5 Stars",
 };
-
-const Header = () => {
-  return (
-    <>
-      <div id="header">
-        <Title />
-        <div id="nav-items">
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Cart</li>
-          </ul>
-        </div>
-      </div>
-    </>
-  );
-};
-
-const ResturantCard = ({resturant}) => {
-  // let {} =  /re
-  console.log(resturant);
-  return (
-    <>
-      <div id="card">
-        <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${resturant.card.data.cloudinaryImageId}`}/>
-        <h3>{resturant.card.data.name}</h3>
-        <h4>{resturant.card.data.cuisines}</h4>
-        <h5>{resturant.card.data.avgRating} Stars</h5>
-      </div>
-    </>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="resturant">
-      <ResturantCard resturant={resturantData[0]} />
-      <ResturantCard resturant={resturantData[1]} />
-      <ResturantCard resturant={resturantData[2]} />
-      <ResturantCard resturant={resturantData[3]} />
-      <ResturantCard resturant={resturantData[4]} />
-      <ResturantCard resturant={resturantData[5]} />
-    </div>
-  );
-};
-
-const Footer = () => {
-  return <h3>Hello World</h3>;
-};
-
-let AppLayout = () => {
-  return (
-    <div>
-      <Header />
-      <Body />
-      <Footer />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);

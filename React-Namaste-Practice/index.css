@@ -18,7 +18,7 @@
     width: 100px;
 }
 
-#card {
+#card, #dynamic{
     border: 1px solid black;
     padding: 8px;
     margin: 10px;
@@ -29,7 +29,13 @@
     width: 100%;
 }
 
-.resturant {
+.restaurant {
     display: flex;
     flex-wrap: wrap;
+}
+#dynamic {
+    width: 200px;
+}
+#dynamic img{
+    width: 100%;
 }
