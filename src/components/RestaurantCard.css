@@ -1,0 +1,11 @@
+#card, #dynamic{
+    border: 1px solid black;
+    padding: 8px;
+    margin: 10px;
+    width: 230px;
+    background-color: rgb(182, 235, 232);
+}
+
+#card img{
+    width: 100%;
+}
