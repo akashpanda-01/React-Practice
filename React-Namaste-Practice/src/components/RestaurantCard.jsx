@@ -9,7 +9,11 @@ const RestaurantCard = ({ restaurant }) => {
       <div id="card">
         <img
           // src={`https://media-assets.swiggy.com/swiggy/image/upload/${props.resturant.data.cloudinaryImageId}`}
-          src={ IMG_CDN_URL + restaurant?.cloudinaryImageId}
+          src={
+            restaurant.cloudinaryImageId
+              ? IMG_CDN_URL + restaurant?.cloudinaryImageId
+              : null
+          }
           alt={restaurant?.name}
         />
         {/* <h3>{props.resturant.data.name}</h3>
