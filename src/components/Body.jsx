@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 // import { restaurantData } from "../constants.jsx";
 import RestaurantCard from "./RestaurantCard.jsx";
 import Shimmer from "./Shimmer.jsx";
+import { NavigationType } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // function filterData(searchText, restaurants) {
 //   let filterData = restaurants.filter((restaurant) =>
@@ -38,8 +40,6 @@ const Body = () => {
         "https://www.swiggy.com/dapi/restaurants/search/v3?lat=13.0035068&lng=77.5890953&str=Banana%20Leaf&trackingId=3008b9e9-845e-715a-e069-f2ef56971fc1&submitAction=ENTER&queryUniqueId=eeb9b741-2a11-dde6-bd87-bbf9072ce4d6"
       );
       const json = await data.json();
-      console.log(json);
-
       const restaurantArray =
         json.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards[1]?.card?.card?.restaurants.map(
           (c) => c?.info
@@ -114,7 +114,7 @@ const Body = () => {
           onClick={() => {
             if (searchText.trim() === "") {
               setFilteredRestaurants(allRestaurants);
-            } else { 
+            } else {
               let data = filterData(searchText, allRestaurants);
               setFilteredRestaurants(data);
             }
@@ -124,11 +124,13 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant">
-        { filteredRestaurants.length === 0 ? (
+        {filteredRestaurants.length === 0 ? (
           <h1>No Data Found</h1>
         ) : (
           filteredRestaurants.map((res) => (
-            <RestaurantCard restaurant={res} key={res?.id} />
+            <NavLink to={"/restaurant/" + res?.id}>
+              <RestaurantCard restaurant={res}/>
+            </NavLink>
           ))
         )}
         {/* <Dynamic /> */}

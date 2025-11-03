@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 const Title = () => {
@@ -22,10 +23,18 @@ const Header = () => {
         <Title />
         <div className="nav-items">
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Cart</li>
+            <NavLink to={"/"}>
+              <li>Home</li>
+            </NavLink>
+            <NavLink to={"/about"}>
+              <li>About</li>
+            </NavLink>
+            <NavLink to={"/contact"}>
+              <li>Contact</li>
+            </NavLink>
+            <NavLink>
+              <li>Cart</li>
+            </NavLink>
           </ul>
         </div>
         <div>
