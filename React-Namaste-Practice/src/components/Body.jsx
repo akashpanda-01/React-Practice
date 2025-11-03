@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import Dynamic from "./Dynamic.jsx";
 // import { restaurantData } from "../constants.jsx";
 import RestaurantCard from "./RestaurantCard.jsx";
-import Shimmer from "./Shimmer.jsx";
+import Shimmer from "./Shimmer.js";
 import { NavigationType } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
