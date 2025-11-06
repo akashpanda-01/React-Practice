@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import Dynamic from "./Dynamic.jsx";
 // import { restaurantData } from "../constants.jsx";
 import RestaurantCard from "./RestaurantCard.jsx";
-import Shimmer from "./Shimmer.js";
+import Shimmer from "./Shimmer.jsx";
 import { NavigationType } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
@@ -128,7 +128,7 @@ const Body = () => {
           <h1>No Data Found</h1>
         ) : (
           filteredRestaurants.map((res) => (
-            <NavLink to={"/restaurant/" + res?.id}>
+            <NavLink to={"/restaurant/" + res?.id} key={res?.id}>
               <RestaurantCard restaurant={res}/>
             </NavLink>
           ))
