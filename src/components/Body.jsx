@@ -128,7 +128,7 @@ const Body = () => {
           <h1>No Data Found</h1>
         ) : (
           filteredRestaurants.map((res) => (
-            <NavLink to={"/restaurant/" + res?.id}>
+            <NavLink to={"/restaurant/" + res?.id} key={res?.id}>
               <RestaurantCard restaurant={res}/>
             </NavLink>
           ))
