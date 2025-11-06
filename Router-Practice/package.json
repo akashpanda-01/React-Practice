@@ -1,0 +1,30 @@
+{
+  "name": "router-practice",
+  "version": "1.0.0",
+  "description": "Practicing Router",
+  "main": "app.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akashpanda-01/React-Practice.git"
+  },
+  "author": "Akash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akashpanda-01/React-Practice/issues"
+  },
+  "homepage": "https://github.com/akashpanda-01/React-Practice#readme",
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.4"
+  },
+  "devDependencies": {
+    "vite": "^7.1.12",
+    "vite-plugin-react": "^4.0.1"
+  }
+}

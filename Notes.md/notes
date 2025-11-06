@@ -1,0 +1,50 @@
+React by Namaste Akashy Saini
+
+Using React JS Creating Heading
+
+<body>
+  <div id="root"></div>
+  <script>
+    let heading = document.createElement("h1");
+    heading.innerHTML = "Hello World";
+    let root = document.getElementById("root");
+    root.appendChild(heading);
+  </script>
+</body>
+
+In React
+
+While creating an element we use:
+React.createElement()
+
+And we pass three arguments to it:
+React.createElement("h1", {}, "Hello World");
+
+Element type — "h1"
+
+Props — {}
+
+Children — "Hello World"
+
+const heading = React.createElement(
+  "h1",
+  { id: "title" },
+  "Namaste Everyone"
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
+Note:
+
+When we render a heading into a div using React,
+or we create multiple headings inside that div using HTML,
+when we render our React heading (created by React),
+it will override the other HTML headings inside that div.
+
+What is a Package?
+
+It’s like a module or package of JavaScript files.
+If we want some package into our code, then we have to use a package manager.
+
+NPM doesn’t stand for Node Package Manager.
