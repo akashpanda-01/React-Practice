@@ -1,4 +1,4 @@
-import burgerImage from "../assets/burger.jpg";
+import burgerImage from "../../assets/burger.jpg";
 
 export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/"
 

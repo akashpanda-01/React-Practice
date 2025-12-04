@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-// import Dynamic from "./Dynamic.jsx";
-// import { restaurantData } from "../constants.jsx";
-import RestaurantCard from "./RestaurantCard.jsx";
+import React, { useState } from "react";
+
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard.jsx";
 import Shimmer from "./Shimmer.jsx";
-import { NavigationType } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import "./Body.css";
+import useOnlineStatus from "../utils/useOnlineStatus.jsx";
+import useRestaurant from "../utils/useRestaurantsa.jsx";
+// import { restaurantData } from "../utils/constants.jsx";
 
 // function filterData(searchText, restaurants) {
 //   let filterData = restaurants.filter((restaurant) =>
@@ -16,9 +18,7 @@ import { NavLink } from "react-router-dom";
 // const searchResult = "true";
 
 const Body = () => {
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [allRestaurants, setAllRestaurants] = useState([]);
 
   // const [search, setSearch] = useState("True");
 
@@ -30,30 +30,18 @@ const Body = () => {
   //   }
   // }
 
-  useEffect(() => {
-    getRestaurants();
-  }, []);
-
-  async function getRestaurants() {
-    try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/search/v3?lat=13.0035068&lng=77.5890953&str=Banana%20Leaf&trackingId=3008b9e9-845e-715a-e069-f2ef56971fc1&submitAction=ENTER&queryUniqueId=eeb9b741-2a11-dde6-bd87-bbf9072ce4d6"
-      );
-      const json = await data.json();
-      const restaurantArray =
-        json.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards[1]?.card?.card?.restaurants.map(
-          (c) => c?.info
-        );
-      setFilteredRestaurants(restaurantArray);
-
-      setAllRestaurants(restaurantArray || []);
-    } catch (err) {}
-  }
+  const { allRestaurants, filteredRestaurants, setFilteredRestaurants } =
+    useRestaurant();
 
   function filterData(searchText, allRestaurants) {
     return allRestaurants.filter((restaurant) =>
       restaurant.name.toLowerCase().includes(searchText.toLowerCase())
     );
+  }
+
+  function filteredRestaurant() {
+    const filtered = allRestaurants.filter((data) => data?.avgRating >= 4.2);
+    console.log(filtered);
   }
   // if (!allRestaurants.length === 0) {
   //   <Shimmer />;
@@ -91,6 +79,12 @@ const Body = () => {
   // console.log(searchInput);
   // const searchClick = false;
 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) return <h1>You Are Offline</h1>;
+
   return allRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -110,6 +104,7 @@ const Body = () => {
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
+          type="search"
           className="search-btn"
           onClick={() => {
             if (searchText.trim() === "") {
@@ -122,6 +117,9 @@ const Body = () => {
         >
           Search
         </button>
+        <button className="rated-btn" onClick={filteredRestaurant}>
+          Top Rated Restaurants
+        </button>
       </div>
       <div className="restaurant">
         {filteredRestaurants.length === 0 ? (
@@ -129,7 +127,11 @@ const Body = () => {
         ) : (
           filteredRestaurants.map((res) => (
             <NavLink to={"/restaurant/" + res?.id} key={res?.id}>
-              <RestaurantCard restaurant={res}/>
+              {res?.promoted ? (
+                <RestaurantCardPromoted restaurant={res} />
+              ) : (
+                <RestaurantCard restaurant={res} />
+              )}
             </NavLink>
           ))
         )}

@@ -2,6 +2,7 @@
 .restaurant {
     display: flex;
     flex-wrap: wrap;
+    padding: 15px;
 }
 #dynamic {
     width: 200px;

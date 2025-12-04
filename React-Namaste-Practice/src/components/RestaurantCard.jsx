@@ -1,5 +1,5 @@
 import React from "react";
-import { IMG_CDN_URL } from "../constants";
+import { IMG_CDN_URL } from "../utils/constants";
 import "./RestaurantCard.css";
 
 const RestaurantCard = ({ restaurant }) => {
@@ -22,9 +22,22 @@ const RestaurantCard = ({ restaurant }) => {
         <h3>{restaurant.name}</h3>
         <h4>{restaurant.cuisines?.join(", ")}</h4>
         <h5>{restaurant.avgRating} Stars</h5>
+        <h5>{restaurant.costForTwo}</h5>
       </div>
     </>
   );
+};
+
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+         <label className="promoted">Promoted</label>
+         <RestaurantCard {...props} /> 
+      </div>
+    )
+  }
 };
 
 export default RestaurantCard;
