@@ -29,16 +29,16 @@ const Header = () => {
           <ul>
             <li>Online Status: {onlineStatus ? "✅" : "🔴"}</li>
 
-            <NavLink to={"/"}>
+            <NavLink className="nav-link" to={"/"}>
               <li>Home</li>
             </NavLink>
-            <NavLink to={"/about"}>
+            <NavLink className="nav-link" to={"/about"}>
               <li>About</li>
             </NavLink>
-            <NavLink to={"/contact"}>
+            <NavLink className="nav-link" to={"/contact"}>
               <li>Contact</li>
             </NavLink>
-            <NavLink>
+            <NavLink className="nav-link" to={"/cart"}>
               <li>Cart</li>
             </NavLink>
           </ul>

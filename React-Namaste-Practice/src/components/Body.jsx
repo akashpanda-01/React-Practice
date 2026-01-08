@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard.jsx";
 import Shimmer from "./Shimmer.jsx";
 import { NavLink } from "react-router-dom";
@@ -29,6 +28,8 @@ const Body = () => {
   //     setSearch("True");
   //   }
   // }
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   const { allRestaurants, filteredRestaurants, setFilteredRestaurants } =
     useRestaurant();
@@ -78,8 +79,6 @@ const Body = () => {
   // let searchText = "KFC";
   // console.log(searchInput);
   // const searchClick = false;
-
-  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   const onlineStatus = useOnlineStatus();
 
