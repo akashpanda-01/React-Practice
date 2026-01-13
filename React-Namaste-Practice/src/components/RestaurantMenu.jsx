@@ -1,10 +1,14 @@
 import React from "react";
+import Shimmer from "./Shimmer.jsx";
+// import swiggyMenuMock from "../utils/swiggyMenuMock.jsx";
+
 // import { IMG_CDN_URL } from "../constants";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IMG_CDN_URL } from "../utils/constants";
+
 const RestaurantMenu = () => {
-  const [menu, setMenu] = useState();
+  const [menu, setMenu] = useState(null);
   const { resId } = useParams();
 
   useEffect(() => {
@@ -14,25 +18,43 @@ const RestaurantMenu = () => {
 
   async function getRestaurantInfo() {
     try {
-      
-      const url = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0035068&lng=77.5890953&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;
+      // const PROXY = "https://corsproxy.io/?";
+      const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${resId}`;
       const data = await fetch(url);
+      const json = await data.json();
 
-      const json = await data?.json();
-      setMenu(json?.data?.cards[0]?.card?.card?.info);
-      console.log(json?.data?.cards);
+      // console.log(json);
+
+      // const restaurantInfo = swiggyMenuMock?.data?.cards?.find(
+      //   (c) => c?.card?.card?.info
+      // )?.card?.card?.info;
+
+      // const restaurantInfo = json?.data?.cards?.find((c) => c?.card?.card?.info)
+      //   ?.card?.card?.info;
+
+      const restaurantInfo = json.;
+      console.log(restaurantInfo);
+
+      // const restaurantMenu = restaurantInfo?.
+      setMenu(restaurantInfo);
     } catch (err) {
       console.log(err);
     }
   }
 
+  if (!menu) {
+    return <Shimmer />;
+  }
+
+  console.log(menu);
   return (
     <div>
       <h1>Restaurant id : {resId}</h1>
-      <h2>{menu?.name}</h2>
-      {menu?.cloudinaryImageId && (
+      <h2>{menu?.strMeal}</h2>
+      {menu?.strMealThumb && (
         <img src={IMG_CDN_URL + menu.cloudinaryImageId} alt="restaurant" />
       )}
+      {/* {menu?.cuisines?.map()} */}
     </div>
   );
 };
