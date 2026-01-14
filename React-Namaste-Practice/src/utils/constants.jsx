@@ -1,6 +1,6 @@
 import burgerImage from "../../assets/burger.jpg";
 
-export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/"
+export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/";
 
 export const restaurantData = [
   {
@@ -482,3 +482,5 @@ export const dynamicaData = {
   cusines: ["Burger", "Indian"],
   rating: "4.5 Stars",
 };
+
+export const PUBLIC_API = "https://www.themealdb.com/api/json/v1/1/search.php?s=";

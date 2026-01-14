@@ -1,15 +1,18 @@
 import React from "react";
 import Shimmer from "./Shimmer.jsx";
 // import swiggyMenuMock from "../utils/swiggyMenuMock.jsx";
+import { PUBLIC_API } from "../utils/constants.jsx";
 
 // import { IMG_CDN_URL } from "../constants";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IMG_CDN_URL } from "../utils/constants";
 
 const RestaurantMenu = () => {
-  const [menu, setMenu] = useState(null);
+  const [meals, setMeals] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { resId } = useParams();
+
+  // console.log("ResId is", resId);
 
   useEffect(() => {
     getRestaurantInfo();
@@ -19,7 +22,7 @@ const RestaurantMenu = () => {
   async function getRestaurantInfo() {
     try {
       // const PROXY = "https://corsproxy.io/?";
-      const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${resId}`;
+      const url = PUBLIC_API + resId;
       const data = await fetch(url);
       const json = await data.json();
 
@@ -32,31 +35,37 @@ const RestaurantMenu = () => {
       // const restaurantInfo = json?.data?.cards?.find((c) => c?.card?.card?.info)
       //   ?.card?.card?.info;
 
-      const restaurantInfo = json.;
-      console.log(restaurantInfo);
-
-      // const restaurantMenu = restaurantInfo?.
-      setMenu(restaurantInfo);
+      setMeals(json?.meals || []);
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   }
 
-  if (!menu) {
-    return <Shimmer />;
+  if(loading){
+    return <Shimmer />
   }
 
-  console.log(menu);
+  if (!meals.length) {
+    return <h1>No Meal Found</h1>
+  }
+
   return (
     <div>
-      <h1>Restaurant id : {resId}</h1>
-      <h2>{menu?.strMeal}</h2>
-      {menu?.strMealThumb && (
-        <img src={IMG_CDN_URL + menu.cloudinaryImageId} alt="restaurant" />
-      )}
-      {/* {menu?.cuisines?.map()} */}
+      <h1>Restaurant Data</h1>
+
+      {meals.map((meal) => (
+        <div key={meal.idMeal}>
+          <h2>{meal?.strMeal}</h2>
+          {meal?.strMealThumb && (
+            <img src={meal.strMealThumb} alt="restaurant" />
+          )}
+          <p>{meal.strInstructions}</p>
+        </div>
+      ))}
     </div>
-  );
+  )
 };
 
 export default RestaurantMenu;
