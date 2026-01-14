@@ -53,7 +53,7 @@ const RestaurantMenu = () => {
 
   return (
     <div>
-      <h1>Restaurant Data</h1>
+      <h1>Meal For {resId}</h1>
 
       {meals.map((meal) => (
         <div key={meal.idMeal}>

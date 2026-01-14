@@ -5,8 +5,7 @@ import { NavLink } from "react-router-dom";
 import "./Body.css";
 import useOnlineStatus from "../utils/useOnlineStatus.jsx";
 import useRestaurant from "../utils/useRestaurantsa.jsx";
-// import { restaurantData } from "../utils/constants.jsx";
-
+import publicApiMap from "../utils/publicApiKey.jsx";
 // function filterData(searchText, restaurants) {
 //   let filterData = restaurants.filter((restaurant) =>
 //     restaurant.name.toLowerCase().includes(searchText.toLowerCase())
@@ -80,6 +79,11 @@ const Body = () => {
   // console.log(searchInput);
   // const searchClick = false;
 
+  const getPublicKey = (name) => {
+    const key = name.toLowerCase();
+    return publicApiMap[key] || "pizza";
+  };
+
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false) return <h1>You Are Offline</h1>;
@@ -124,15 +128,19 @@ const Body = () => {
         {filteredRestaurants.length === 0 ? (
           <h1>No Data Found</h1>
         ) : (
-          filteredRestaurants.map((res) => (
-            <NavLink to={"/restaurant/" + res?.id} key={res?.id}>
-              {res?.promoted ? (
-                <RestaurantCardPromoted restaurant={res} />
-              ) : (
-                <RestaurantCard restaurant={res} />
-              )}
-            </NavLink>
-          ))
+          filteredRestaurants.map((res) => {
+            const publicKey = getPublicKey(res.name);
+
+            return (
+              <NavLink to={"/restaurant/" + publicKey} key={res?.id}>
+                {res?.promoted ? (
+                  <RestaurantCardPromoted restaurant={res} />
+                ) : (
+                  <RestaurantCard restaurant={res} />
+                )}
+              </NavLink>
+            );
+          })
         )}
         {/* <Dynamic /> */}
         {/* <RestaurantCard {...restaurantData[0].card} />
