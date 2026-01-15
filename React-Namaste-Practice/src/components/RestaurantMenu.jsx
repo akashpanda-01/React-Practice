@@ -21,7 +21,6 @@ const RestaurantMenu = () => {
 
   async function getRestaurantInfo() {
     try {
-      // const PROXY = "https://corsproxy.io/?";
       const url = PUBLIC_API + resId;
       const data = await fetch(url);
       const json = await data.json();
