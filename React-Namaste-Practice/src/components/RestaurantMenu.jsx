@@ -61,6 +61,7 @@ const RestaurantMenu = () => {
             <img src={meal.strMealThumb} alt="restaurant" />
           )}
           <p>{meal.strInstructions}</p>
+          <p>{meal.strInstructions}</p>
         </div>
       ))}
     </div>
