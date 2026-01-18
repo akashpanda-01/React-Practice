@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext.jsx";
 
 const Title = () => {
   return (
@@ -20,6 +21,7 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const onlineStatus  = useOnlineStatus();
+  const {loggedInUser} = useContext(UserContext)
 
   return (
     <>
@@ -52,7 +54,9 @@ const Header = () => {
             <button onClick={() => setIsLoggedIn(true)} className="btn-logged">
               Logout
             </button>
+            
           )}
+          <li>{loggedInUser}</li>
         </div>
       </div>
     </>
