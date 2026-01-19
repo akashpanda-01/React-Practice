@@ -45,7 +45,7 @@ const Header = () => {
             </NavLink>
           </ul>
         </div>
-        <div>
+        <div className="UserLogged">
           {isLoggedIn ? (
             <button onClick={() => setIsLoggedIn(false)} className="btn-logged">
               Login
@@ -56,7 +56,7 @@ const Header = () => {
             </button>
             
           )}
-          <li>{loggedInUser}</li>
+          <li className="">{loggedInUser}</li>
         </div>
       </div>
     </>
