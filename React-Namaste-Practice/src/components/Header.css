@@ -19,11 +19,15 @@
 .nav-items ul{
     display: flex;
     list-style-type: none;
-    gap: 10px;
+    /* gap: 10px; */
     /* justify-content:flex-end; */
 }
 .nav-items ul li {
     padding: 10px;
+}
+
+.status{
+    width: 180px;
 }
 
 .nav-link{
@@ -44,16 +48,20 @@
 }
 .btn-logged{
     width: 60px;
-    height: 60px;
+    height: 30px;
     border: 2px solid black;
     color: white;
     background-color: blue;
-    margin: auto;
+    /* margin: auto; */
+    margin-top: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
+    
 }
 
 .UserLogged{
     display: flex;
-    gap: 25px;
+    gap: 10px;
 }
 .UserLogged li{
     width: 100px;
@@ -66,4 +74,5 @@
     border: 2px solid black;
     background-color:  aqua;
     font-weight: bold;
+    border-radius: 5px;
 }

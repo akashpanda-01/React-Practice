@@ -29,7 +29,7 @@ const Header = () => {
         <Title />
         <div className="nav-items">
           <ul>
-            <li>Online Status: {onlineStatus ? "✅" : "🔴"}</li>
+            <li className="status">Online Status: {onlineStatus ? "✅" : "🔴"}</li>
 
             <NavLink className="nav-link" to={"/"}>
               <li>Home</li>
@@ -46,6 +46,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="UserLogged">
+          <li className="">{loggedInUser}</li>
           {isLoggedIn ? (
             <button onClick={() => setIsLoggedIn(false)} className="btn-logged">
               Login
@@ -54,9 +55,7 @@ const Header = () => {
             <button onClick={() => setIsLoggedIn(true)} className="btn-logged">
               Logout
             </button>
-            
           )}
-          <li className="">{loggedInUser}</li>
         </div>
       </div>
     </>
