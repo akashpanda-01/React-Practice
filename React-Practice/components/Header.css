@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 40px;
+  margin: 15px;
+
+  /* Cool Glass Background */
+  background: linear-gradient(
+    135deg,
+    #667eea,
+    #764ba2,
+    #6dd5ed
+  );
+
+  border-radius: 25px;
+
+  /* Cool Border */
+  border: 2px solid rgba(255, 255, 255, 0.25);
+
+  /* Premium Shadow */
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(102, 126, 234, 0.4);
+
+  /* Glass Effect */
+  backdrop-filter: blur(10px);
+
+  transition: all 0.3s ease;
+}
+
+/* Hover Animation */
+.header:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(109, 213, 237, 0.6);
+}
+
+.nav-items ul {
+  display: flex;
+  gap: 30px;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-items ul li {
+  color: white;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.nav-items ul li:hover {
+  color: #ffe082;
+
+  transform: scale(1.1);
+
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
