@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import "./App.css";
 
 // let heading = document.createElement("h1")
 // heading.innerHTML="Hello World";
@@ -48,11 +49,11 @@ import Footer from "./components/Footer";
 
 function AppLayout() {
   return (
-    <>
+    <div className="main">
       <Header />
       <Body />
       <Footer />
-    </>
+    </div>
   );
 }
 

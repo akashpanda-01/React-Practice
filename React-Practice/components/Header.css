@@ -2,9 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 15px 40px;
-  margin: 15px;
+  margin: 30px 15px 15px 15px;;
 
   /* Cool Glass Background */
   background: linear-gradient(
@@ -38,6 +37,7 @@
     0 12px 30px rgba(0, 0, 0, 0.25),
     0 0 30px rgba(109, 213, 237, 0.6);
 }
+
 
 .nav-items ul {
   display: flex;
