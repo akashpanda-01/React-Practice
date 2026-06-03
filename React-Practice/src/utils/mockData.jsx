@@ -1,8 +1,4 @@
-import React from "react";
-import RestaurantCard from "./RestaurantCard";
-import "./Body.css";
-
-const restaurants = [
+const resData = [
   {
     info: {
       id: "14555",
@@ -1699,7 +1695,7 @@ const restaurants = [
   {
     "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
     info: {
-      id: "376716",
+      id: "376717",
       name: "Chinese Wok",
       cloudinaryImageId: "e0839ff574213e6f35b3899ebf1fc597",
       locality: "Ms Ramaiah Nagar",
@@ -1773,7 +1769,7 @@ const restaurants = [
   {
     "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
     info: {
-      id: "376843",
+      id: "376844",
       name: "Big Bowl",
       cloudinaryImageId:
         "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/22/deff0d02-ca1d-4ef9-9d62-b0cbeabf33d3_376843.JPG",
@@ -1848,7 +1844,7 @@ const restaurants = [
   {
     "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
     info: {
-      id: "64681",
+      id: "64682",
       name: "Homely",
       cloudinaryImageId: "aou7zch2ztn18ttry0oa",
       locality: "Hebbala",
@@ -2222,7 +2218,7 @@ const restaurants = [
   {
     "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
     info: {
-      id: "560792",
+      id: "560793",
       name: "McDonald's",
       cloudinaryImageId:
         "RX_THUMBNAIL/IMAGES/VENDOR/2025/10/3/b945185d-fa16-415e-a378-36e9ee18ca30_560792.JPG",
@@ -2297,14 +2293,4 @@ const restaurants = [
   },
 ];
 
-const Body = () => {
-  return (
-    <div className="body-container">
-      {restaurants.map((data) => {
-        return <RestaurantCard data={data} />;
-      })}
-    </div>
-  );
-};
-
-export default Body;
+export default resData;
