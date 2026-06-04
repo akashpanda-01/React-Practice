@@ -6,11 +6,34 @@
   margin-left: 40px;
 }
 
-.filter-btn{
+.filter-btn {
   border: 2px solid rgb(244, 86, 38);
   border-radius: 5px;
   cursor: pointer;
   background-color: orangered;
   margin-left: 66px;
   font-weight: bolder;
+}
+
+.search-input {
+  border: 2px solid Black;
+  border-radius: 5px;
+  background-color: orangered;
+  margin-left: 66px;
+  padding-left: 5px;
+  font-weight: bolder;
+}
+
+.search-btn {
+  width: 60px;
+  border: 2px solid Black;
+  border-radius: 5px;
+  margin-left: 5px;
+  background-color: orangered;
+  font-weight: bolder;
+}
+
+::placeholder {
+  color: black; 
+  opacity: 1;
 }

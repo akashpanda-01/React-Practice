@@ -1,6 +1,14 @@
 import React from "react";
-import Title from "./Title.jsx";
 import "./Header.css";
+
+
+const Title = () => {
+  return (
+    <a href="/">
+      <img className="logo" alt="logo" src="../assets/FoodVilla.png" />
+    </a>
+  );
+};
 
 const Header = () => {
   return (
