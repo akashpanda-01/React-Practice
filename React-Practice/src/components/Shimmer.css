@@ -1,81 +1,68 @@
 .shimmer-container {
   display: flex;
   flex-wrap: wrap;
-
   gap: 20px;
-
-  padding: 25px;
+  padding: 20px;
+  justify-content: center;
 }
 
 .shimmer-card {
   width: 250px;
-
-  padding: 12px;
-
-  border-radius: 15px;
-
-  background: #111827;
-
-  overflow: hidden;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  border: 1px solid #c9c6c6;
 
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.2);
+    0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.shimmer-image {
+.shimmer-img {
   width: 100%;
   height: 160px;
-
   border-radius: 12px;
-
-  margin-bottom: 15px;
-
-  animation: shimmer 1.5s infinite linear;
-
-  background: linear-gradient(
-    90deg,
-    #1f2937 25%,
-    #374151 50%,
-    #1f2937 75%
-  );
-
-  background-size: 400% 100%;
-}
-
-.shimmer-line {
-  height: 15px;
-
-  border-radius: 10px;
-
   margin-bottom: 12px;
+}
 
-  animation: shimmer 1.5s infinite linear;
+.shimmer-title {
+  width: 80%;
+  height: 24px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
 
+.shimmer-cuisine {
+  width: 95%;
+  height: 18px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.shimmer-rating {
+  width: 40%;
+  height: 18px;
+  border-radius: 6px;
+}
+
+.shimmer {
   background: linear-gradient(
     90deg,
-    #1f2937 25%,
-    #374151 50%,
-    #1f2937 75%
+    #eeeeee 25%,
+    #9e9c9c 50%,
+    #eeeeee 75%
   );
 
-  background-size: 400% 100%;
-}
+  background-size: 200% 100%;
 
-.shimmer-line.title {
-  width: 80%;
-  height: 20px;
-}
-
-.shimmer-line.short {
-  width: 60%;
+  animation: shimmer 1.3s infinite linear;
 }
 
 @keyframes shimmer {
   0% {
-    background-position: 100% 0;
+    background-position: -200% 0;
   }
 
   100% {
-    background-position: -100% 0;
+    background-position: 200% 0;
   }
 }
