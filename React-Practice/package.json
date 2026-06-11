@@ -12,10 +12,11 @@
   "author": "Akash",
   "license": "ISC",
   "devDependencies": {
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "vite": "^8.0.14"
   },
   "dependencies": {
-    "vite": "^8.0.14"
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.17.0"
   }
 }

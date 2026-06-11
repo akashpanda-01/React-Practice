@@ -4,6 +4,10 @@ import Header from "./src/components/Header";
 import Body from "./src/components/Body";
 import Footer from "./src/components/Footer";
 import "./App.css";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import About from "./src/components/About";
+import Contact from "./src/components/Contact";
+import Error from "./src/components/Error";
 
 // let heading = document.createElement("h1")
 // heading.innerHTML="Hello World";
@@ -51,12 +55,34 @@ function AppLayout() {
   return (
     <div className="main">
       <Header />
-      <Body />
+      <Outlet/>
       <Footer />
     </div>
   );
 }
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body/>
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root")).render(
-  <AppLayout />,
+  <RouterProvider router={appRouter} />,
 );
