@@ -21,7 +21,6 @@ const Header = () => {
           <NavLink to={"/about"}><li>About</li></NavLink>
           <NavLink to={"/contact"}><li>Contact</li></NavLink>
           <NavLink><li>Cart</li></NavLink>
-          
         </ul>
       </div>
     </div>

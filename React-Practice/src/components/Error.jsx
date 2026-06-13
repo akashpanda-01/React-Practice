@@ -5,6 +5,8 @@ const Error = () => {
     return(
         <div>
             <h1>Something Went Wrong.... !! {err.status}</h1>
+            {console.log(err)
+            }
         </div>
     )
 };

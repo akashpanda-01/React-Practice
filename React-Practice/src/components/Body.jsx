@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import "./Body.css";
 import Shimmer from "./Shimmer";
-// import resData from "../utils/mockData";
+import RestaurantMenu from "./RestaurantMenu";
+import { NavLink } from "react-router-dom";
 
 function filterData(searchText, allRestaurants) {
   if (!searchText.trim()) {
@@ -26,7 +27,7 @@ const Body = () => {
   async function getRestaurants() {
     try {
       const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0035068&lng=77.5890953&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.27060&lng=85.83340&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
       );
       const json = await data.json();
 
@@ -51,7 +52,7 @@ const Body = () => {
         type="text"
         className="search-input"
         placeholder="Search Your Favorites"
-        onChange={(e) =>{
+        onChange={(e) => {
           setSearchText(e?.target?.value);
         }}
       />
@@ -79,7 +80,13 @@ const Body = () => {
       <div className="body-container">
         {Array.isArray(allRestaurants) &&
           filterRestaurant.map((restaurant) => (
-            <RestaurantCard key={restaurant?.info?.id} {...restaurant?.info} />
+            <NavLink to={"/restaurantMenu"}>
+              <RestaurantCard
+                key={restaurant?.info?.id}
+                {...restaurant?.info}
+              />
+            </NavLink>
+            // <RestaurantMenu RestaurantCard key={restaurant?.info?.id}/>
           ))}
       </div>
     </div>

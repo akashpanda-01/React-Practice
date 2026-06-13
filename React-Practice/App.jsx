@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./src/components/About";
 import Contact from "./src/components/Contact";
 import Error from "./src/components/Error";
+import RestaurantMenu from "./src/components/RestaurantMenu";
 
 // let heading = document.createElement("h1")
 // heading.innerHTML="Hello World";
@@ -55,7 +56,7 @@ function AppLayout() {
   return (
     <div className="main">
       <Header />
-      <Outlet/>
+      <Outlet />
       <Footer />
     </div>
   );
@@ -69,7 +70,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body/>
+        element: <Body />,
       },
       {
         path: "/about",
@@ -78,6 +79,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/restaurantMenu",
+        element: <RestaurantMenu />,
       },
     ],
   },
