@@ -1,21 +1,31 @@
 import { useState, useEffect } from "react";
 import { resMenu } from "../utils/mockData";
+import "./RestaurantMenu.css";
+import { MenuURL } from "../utils/Constant";
 
 const RestaurantMenu = () => {
   const [menu, setMenu] = useState(resMenu);
-  console.log(resMenu);
-
-  //   const {name, imageId, price, id, ratings} = menu?.card?.info;
+  // console.log(resMenu);
 
   return (
-    <div>
-      {resMenu.map((item) => (
-        <div className={"menuCard"} key={item.card.info.id}>
-          <h1>Name: {item.card.info.name}</h1>,
-          <div>Price: {item.card.info.price}</div>,
-          <p>Rating: {item.card.info.ratings.rating}</p>
-        </div>
-      ))}
+    <div className="menuContainer">
+      {menu.map((item) => {
+        const { name, imageId, price, id, ratings } = item?.card?.info;
+
+        return (
+          <div className="menuCard" key={id}>
+            <img className="menuImg" src={MenuURL+imageId} alt={name} />
+
+            <div className="menuInfo">
+              <h2>{name}</h2>
+              <div className="price">₹{price / 100}</div>
+              <div className="rating">★ {ratings.rating}</div>
+            </div>
+
+            <button className="addBtn">ADD</button>
+          </div>
+        );
+      })}
     </div>
   );
 };
