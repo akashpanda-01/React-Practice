@@ -80,9 +80,8 @@ const Body = () => {
       <div className="body-container">
         {Array.isArray(allRestaurants) &&
           filterRestaurant.map((restaurant) => (
-            <NavLink to={"/restaurantMenu"}>
+            <NavLink to={"/restaurantMenu"} key={restaurant?.info?.id}>
               <RestaurantCard
-                key={restaurant?.info?.id}
                 {...restaurant?.info}
               />
             </NavLink>
