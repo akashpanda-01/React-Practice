@@ -1,19 +1,21 @@
 import React, { Children } from "react";
 import ReactDOM from "react-dom/client";
 import About from "./About.jsx";
-import App from "./App.jsx";
+// import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import UserClass from "./UserClass.jsx";
 
 const AppLayout = () => {
   return (
     <div>
+      <UserClass/>
       <NavLink to={"/"}>
         <h3>AppLayout</h3>
       </NavLink>
-      <NavLink to={"/App"}>
+      {/* <NavLink to={"/App"}>
         <h3>App</h3>
-      </NavLink>
+      </NavLink> */}
       <NavLink to={"/About"}>
         <h3>About</h3>
       </NavLink>
@@ -28,10 +30,10 @@ const appRouter =
       path: "/",
       element: <AppLayout />,
       children: [
-        {
-          path: "/App",
-          element: <App />,
-        },
+        // {
+        //   path: "/App",
+        //   element: <App />,
+        // },
         {
           path: "/About",
           element: <About />,

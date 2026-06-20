@@ -1,25 +1,29 @@
-import React, { Component } from "react";
+import React, { Component, } from "react";
+import Child from "./Child";
 
 class About extends Component {
     constructor(){
         super();
-        console.log("Constructor");
+        console.log("Parent-Constructor");
     }
 
-    componentDidMount(){
+    componentDidMount(){    
         
-        console.log("Component Did Mount");
+        console.log("Parent-Component Did Mount");
     };
 
     componentWillUnmount(){
 
-        console.log("Component Will Unmount");
+        console.log("Parent-Component Will Unmount");
     }
 
     render(){
-        console.log("Render");
+        console.log("Parent-Render");
         return(
-            <h1>About Page</h1>
+            <div>
+                <h1>Parent About Page</h1>
+                <Child />
+            </div>  
         )
     }
 }
