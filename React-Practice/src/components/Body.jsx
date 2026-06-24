@@ -4,45 +4,25 @@ import "./Body.css";
 import Shimmer from "./Shimmer";
 import RestaurantMenu from "./RestaurantMenu";
 import { NavLink } from "react-router-dom";
-
-function filterData(searchText, allRestaurants) {
-  if (!searchText.trim()) {
-    return allRestaurants;
-  }
-
-  return allRestaurants.filter((restaurant) =>
-    restaurant?.info?.name?.toLowerCase().includes(searchText.toLowerCase()),
-  );
-}
+import useFilterRestaurant from "../utils/useFilterRestaurant";
+import filterData from "../utils/useFilterData";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
-  const [filterRestaurant, setFilterRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [allRestaurants, setAllRestaurants] = useState([]);
 
-  useEffect(() => {
-    getRestaurants();
-  }, []);
+  const { filterRestaurant, allRestaurants, setFilterRestaurant } =
+    useFilterRestaurant();
+  // const filterData = useFilterText(searchText, allRestaurants);
 
-  async function getRestaurants() {
-    try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.27060&lng=85.83340&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
-      );
-      const json = await data.json();
-
-      const restaurant =
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
-
-      // setRestaurantList(restaurant);
-      setAllRestaurants(restaurant);
-      setFilterRestaurant(restaurant);
-    } catch (error) {
-      console.log("Failled To Fetch Restaurants", error);
-    }
+  const isOnline = useOnlineStatus();
+  if (!isOnline) {
+    return (
+      <h1 className={"status"}>
+        🔴 You are Offline, Please Check Your Connection
+      </h1>
+    );
   }
-
   // if (filterRestaurant.length === 0) return <h1>No Restaurant Match..</h1>;
   return allRestaurants.length === 0 ? (
     <Shimmer />
@@ -81,9 +61,7 @@ const Body = () => {
         {Array.isArray(allRestaurants) &&
           filterRestaurant.map((restaurant) => (
             <NavLink to={"/restaurantMenu"} key={restaurant?.info?.id}>
-              <RestaurantCard
-                {...restaurant?.info}
-              />
+              <RestaurantCard {...restaurant?.info} />
             </NavLink>
             // <RestaurantMenu RestaurantCard key={restaurant?.info?.id}/>
           ))}

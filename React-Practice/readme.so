@@ -1,0 +1,187 @@
+Class Based Components
+======================
+
+* A class based Components is a Javascript Class.
+        class Profile extens React.components{
+            constructor(props){
+                super(props);
+            };
+            componentDidMount(){};
+
+            componentDidUpdate(){};
+
+            componentWillUnmount(){};
+
+            render(){
+                return(
+                    JSX
+                )
+            };
+        };
+
+constructor(){} => In class based components first thing called is constructor.
+                   in here we create state variables.
+
+        How? => constructor(props){
+                    this.state = {
+                        count: 0,  //  0 is the initial value we pass.
+                    };
+                };
+
+super(props) => Super Invokes or calls the class based components parent component by giving props as value.
+                When we use super it initialize "this" in to our class based components.
+
+componentDidMount(){}; => It render after every initial render. it is best place to
+                          make api calls.
+                          we can make componentDidMount(){}; as async.
+            
+                Ex=>  componentDidMount(){
+                        asyn function getData(){
+                            let data = await fetch("https.//api.com");
+                            let json = await data.json();
+                            this.setState({
+                                json;
+                            })
+                        };
+                        getData();
+                      };
+
+Q => why in functional based component we can not make useEffect callback function async ?
+Ans => An async function always returns a Promise.
+       React expects the callback passed to useEffect to return either: "Undefind" or "A cleanup function".
+       but When we use asyn it get us a Promise so react Warns.
+       React stores this cleanup function and executes it during unmount or before rerunning the effect.
+        
+        A Cleanup function => () => {
+                                // cleanup
+                              }
+
+Q => Why In Class Based component we can make componentDidMount(){}; as async.
+Ans => Because React never uses its return value.
+       componentDidMount() can be async because React ignores its return value,
+       whereas useEffect() cannot be async because React uses the callback's return value to obtain the cleanup function, 
+       and an async function always returns a Promise instead of a cleanup function.
+
+
+componentWillUnmount(){}; => In here we use to clean things .
+
+
+
+                            CHAPTER-9
+=========================================================================
+
+Single Responsibility Principle
+-------------------------------
+    A class or function should do only one job. It should have only one reason to change.
+
+Break down → We break down our code into small small responsibilities so our code becomes more maintainable.
+Hooks are utility functions.
+
+Custom Hook
+-----------
+    -Creating a custom hook is not a mandatory thing.
+    -Writing code in a custom way because that makes our code:
+        -> more readable
+        -> more modular
+        -> more reusable
+How Do We Write Custom Hooks?
+----------------------------
+    -Hooks are normal utility functions or helper functions.
+    -The best place to create these helper functions (custom hooks) is in the utils folder.
+    -Always prefer a separate file for a separate hook.
+
+Notes
+-----
+- Creating a hook using "use" is not mandatory in React.
+- React docs recommend us to use the word "use" because when we are creating a hook, 
+  most React projects set a linting process and the browser or linter throws an error 
+  if we do not use the "use" keyword.
+
+Chunking / Code Splitting / Dynamic Bundling
+--------------------------------------------
+    - Chunking / Code Splitting means breaking a large JavaScript bundle into smaller bundles so the browser downloads only the code needed for the current page. 
+      This improves performance and reduces initial loading time.
+    - When we write code by splitting it into different JS files, the bundler bundles all those files into one JS file and gives it to the browser.
+      (Bundler's basic work or important work is bundling)
+
+Problem
+-------
+    - The size of that JS file will increase a lot.
+      We have to create smaller bundles of those files.
+
+This process is known as:
+    - Chunking
+    - Code Splitting
+    - Dynamic Bundling
+    - Lazy Loading
+
+EX Code
+-------
+        import React, { lazy, Suspense } from "react";
+
+        const Grocery = lazy(() => import("./Grocery"));
+
+        function App() {
+        return (
+            <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocery />
+            </Suspense>
+        );
+        }
+
+On Demand Loading
+-----------------
+    - On-demand loading means we don't want to load the Grocery component during the initial render of our app.
+    - We only want to load it when the user goes to the Grocery page.
+
+        We import it like => const Grocery = lazy();
+    
+lazy();
+=======  
+    - lazy is a function provided by React.
+    - It takes a callback function as an argument.
+    EX => const Grocery = lazy(() => import("./path"));
+
+import();
+========
+    - We use import() inside the callback.
+    - This import is different from the normal import statement.
+    - import() is basically a function that takes the path of the component.
+
+What Happens?
+-------------
+    - When our app initially loads in the browser, it does not load the Grocery page into memory.
+    - When we navigate to the Grocery page, the browser requests another JavaScript file that contains the Grocery component.
+      That page is loaded only when required.
+
+If It Doesn't Load (Error)
+--------------------------
+    - A component suspended while responding to synchronous input.
+
+Why Does This Error Happen?
+---------------------------
+    - When we jump to the Grocery page, it takes some time to fetch the data.
+    - React Execute immediately, So During that time React tries to render the component immediately.
+    - React notices that the data/component is not available yet and throws the error.
+    - To handle that state, we will use Suspense.
+
+Suspense
+--------
+    - Suspense is a component that comes from the React library.
+    EX => import { lazy, Suspense } from "react";
+    
+    -We wrap our component inside Suspense.
+    EX => {
+            path: "/grocery",
+            element: (
+                <Suspense>
+                <Grocery />
+                </Suspense>
+            ),
+          };
+    - We have to give this Suspense component a fallback prop.
+    - fallback → We provide here what React should render when the code is not yet available.
+    
+    EX => <Suspense fallback={<h1>Loading</h1>}>
+            <Grocery />
+          </Suspense>

@@ -1,12 +1,31 @@
-export function useFilterRestaurant() {
-  function filterData(searchText, allRestaurants) {
-    if (!searchText.trim()) {
-      return allRestaurants;
-    }
+import { useState, useEffect } from "react";
+import { API_MENU } from "./Constant";
 
-    const filterData = allRestaurants.filter((restaurant) =>
-      restaurant?.info?.name?.toLowerCase().includes(searchText.toLowerCase()),
-    );
-    return filterData;
+function useFilterRestaurant() {
+  const [filterRestaurant, setFilterRestaurant] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);
+
+  useEffect(() => {
+    getRestaurants();
+  }, []);
+
+  async function getRestaurants() {
+    try {
+      const data = await fetch(API_MENU);
+      const json = await data.json();
+
+      const restaurant =
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+
+      // setRestaurantList(restaurant);
+      setAllRestaurants(restaurant);
+      setFilterRestaurant(restaurant);
+    } catch (error) {
+      console.log("Failled To Fetch Restaurants", error);
+    }
   }
-};
+  return { filterRestaurant, allRestaurants, setAllRestaurants, setFilterRestaurant};
+}
+
+export default useFilterRestaurant;

@@ -6,6 +6,11 @@
   margin-left: 40px;
 }
 
+.status{
+  color: white;
+  text-align: center;
+}
+
 .filter-btn {
   border: 2px solid rgb(244, 86, 38);
   border-radius: 5px;
