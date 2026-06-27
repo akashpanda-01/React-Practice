@@ -29,6 +29,10 @@
   transition: all 0.3s ease;
 }
 
+.online-status{
+  color: white;
+}
+
 /* Hover Animation */
 .header:hover {
   transform: translateY(-2px);

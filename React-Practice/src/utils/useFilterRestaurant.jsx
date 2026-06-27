@@ -25,7 +25,12 @@ function useFilterRestaurant() {
       console.log("Failled To Fetch Restaurants", error);
     }
   }
-  return { filterRestaurant, allRestaurants, setAllRestaurants, setFilterRestaurant};
+  return {
+    filterRestaurant,
+    allRestaurants,
+    setAllRestaurants,
+    setFilterRestaurant,
+  };
 }
 
 export default useFilterRestaurant;
